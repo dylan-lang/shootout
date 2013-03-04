@@ -1,6 +1,15 @@
 module: n-body
-use-libraries: common-dylan, io, transcendental
-use-modules: common-dylan, format-out, transcendental
+
+define library n-body
+  use common-dylan;
+  use io;
+end library;
+
+define module n-body
+  use common-dylan, exclude: { format-to-string };
+  use transcendentals;
+  use format-out;
+end module;
 
 define sealed class <planet> (<object>)
   slot x :: <double-float>, required-init-keyword: x:;
@@ -131,9 +140,17 @@ begin
   let n = application-arguments()[0].string-to-integer;
   
   offset-momentum($bodies);
-  format-out("%.9f\n", energy($bodies,0.0));
+  // FIXME: "%.9f" is not supported as control-string, as a result 7 decimal
+  // digits and 'd' marker is print, instead of 9 decimal digits without
+  // marker
+  //format-out("%.9f\n", energy($bodies,0.0));
+  format-out("%=\n", energy($bodies,0.0d0));
   for (i from 1 to n)
     advance($bodies,0.01d0);
   end for;
-  format-out("%.9f\n", energy($bodies,0.0));
+  // FIXME: "%.9f" is not supported as control-string, as a result 7 decimal
+  // digits and 'd' marker is print, instead of 9 decimal digits without
+  // marker
+  //format-out("%.9f\n", energy($bodies,0.0));
+  format-out("%=\n", energy($bodies,0.0d0));
 end;
