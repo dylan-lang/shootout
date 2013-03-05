@@ -141,16 +141,16 @@ begin
   
   offset-momentum($bodies);
   // FIXME: "%.9f" is not supported as control-string, as a result 7 decimal
-  // digits and 'd' marker is print, instead of 9 decimal digits without
-  // marker
+  // digits and 'd' marker is printed, instead of 9 decimal digits without
+  // marker.
   //format-out("%.9f\n", energy($bodies,0.0));
   format-out("%=\n", energy($bodies,0.0d0));
   for (i from 1 to n)
     advance($bodies,0.01d0);
   end for;
   // FIXME: "%.9f" is not supported as control-string, as a result 7 decimal
-  // digits and 'd' marker is print, instead of 9 decimal digits without
-  // marker
+  // digits and 'd' marker is printed, instead of 9 decimal digits without
+  // marker.
   //format-out("%.9f\n", energy($bodies,0.0));
   format-out("%=\n", energy($bodies,0.0d0));
 end;

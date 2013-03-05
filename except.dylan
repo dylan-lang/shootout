@@ -3,6 +3,16 @@ synopsis:   implementation of "Exception Handling" benchmark
 author:     Peter Hinely
 copyright:  public domain
 
+define library except
+  use common-dylan;
+  use io;
+end library;
+
+define module except
+  use common-dylan, exclude: { format-to-string };
+  use format-out;
+end module;
+
 
 define variable hi :: <integer> = 0;
 define variable lo  :: <integer> = 0;
