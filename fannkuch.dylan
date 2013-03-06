@@ -1,16 +1,27 @@
 module: fannkuch
 
+define library fannkuch
+  use common-dylan;
+  use io;
+end library;
+
+define module fannkuch
+  use common-dylan, exclude: { format-to-string };
+  use format-out;
+end module;
+
 define constant <int-vector> = limited(<vector>, of: <integer>);
 
 define function fannkuch (n :: <integer>)
- => result :: <integer>;
+ => (result :: <integer>, checksum :: <integer>);
   let perm :: <int-vector> = make(<int-vector>,size: n,fill: 0);
   let perm1 = make(<int-vector>,size: n,fill: 0);
-  let max-perm = make(<int-vector>,size: n,fill: 0);
   let count = make(<int-vector>,size: n,fill: 0);
   let max-flip-count :: <integer> = 0;
   let m :: <integer> = n - 1;
   let r :: <integer> = n;
+  let odd :: <boolean> = #t;
+  let checksum :: <integer> = 0;
 
   for (i from 0 below n)
     perm1[i] := i;
@@ -23,7 +34,8 @@ define function fannkuch (n :: <integer>)
         r := r - 1;
       end while;
 
-      if (~ (perm1[0] = 0 | perm1[m] = m))
+      odd := ~odd;
+      if (~ (perm1[0] = 0))
         for (i from 0 below n)
           perm[i] := perm1[i];
         end for;
@@ -41,16 +53,14 @@ define function fannkuch (n :: <integer>)
 
         if (flip-count > max-flip-count)
           max-flip-count := flip-count;
-          for (i from 0 below n)
-            max-perm[i] := perm1[i];
-          end for;
         end if;
+        checksum := checksum + if (odd) -flip-count else flip-count end;
       end if;
 
       block(break)
         while(#t)
           if (r = n)
-            return(max-flip-count);
+            return(max-flip-count, checksum);
           end if;
           let perm0 :: <integer> = perm1[0];
           let i :: <integer> = 0;
@@ -74,5 +84,6 @@ end function fannkuch;
 
 begin
   let arg = application-arguments()[0].string-to-integer;
-  format-out("Pfannkuchen(%=) = %d\n", arg, fannkuch(arg));
+  let (max-flips, checksum) = fannkuch(arg);
+  format-out("%=\nPfannkuchen(%=) = %d\n", checksum, arg, max-flips);
 end;
