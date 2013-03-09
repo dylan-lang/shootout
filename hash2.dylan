@@ -2,23 +2,31 @@ module:         hash2
 synopsis:       implementation of "Hashes, Part II" benchmark
 author:         Peter Hinely
 copyright:      public domain
-use-libraries:  common-dylan, table-extensions, format-out
-use-modules:    common-dylan, table-extensions, format-out
+
+define library hash2
+  use common-dylan;
+  use io;
+end library;
+
+define module hash2
+  use common-dylan, exclude: { format-to-string };
+  use format-out;
+end module;
 
 
 define function main () => ()
   let arg = string-to-integer(element(application-arguments(), 0, default: "1"));
 
-  let table1 = make(<byte-string-table>);
-  let table2 = make(<byte-string-table>);
+  let table1 = make(<string-table>);
+  let table2 = make(<string-table>);
 
   for (i from 0 below 10000)
-    let key :: <byte-string> = concatenate-as(<byte-string>, "foo_", integer-to-string(i));
+    let key :: <string> = concatenate-as(<string>, "foo_", integer-to-string(i));
     table1[key] := i;
   end;
 
   for (i from 0 below arg)
-    for (value :: <integer> keyed-by key :: <byte-string> in table1)
+    for (value :: <integer> keyed-by key :: <string> in table1)
       let found :: <integer> = element(table2, key, default: 0);
       table2[key] := found + value;
     end;

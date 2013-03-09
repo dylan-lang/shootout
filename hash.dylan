@@ -2,15 +2,23 @@ module:         hash
 synopsis:       implementation of "Hash (Associative Arrays) Access" benchmark
 author:         Peter Hinely
 copyright:      public domain
-use-libraries:  common-dylan, table-extensions, format-out
-use-modules:    common-dylan, table-extensions, format-out
+
+define library hash
+  use common-dylan;
+  use io;
+end library;
+
+define module hash
+  use common-dylan, exclude: { format-to-string };
+  use format-out;
+end module;
 
 
 define function main () => ()
   let arg = string-to-integer(element(application-arguments(), 0, default: "1"));
 
   let c = 0;
-  let table = make(<byte-string-table>);
+  let table = make(<string-table>);
 
   for (i from 1 to arg)
     table[integer-to-string(i, base: 16)] := i;
