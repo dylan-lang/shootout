@@ -3,6 +3,16 @@ synopsis:  implementation of "Heapsort" benchmark
 author:    Peter Hinely
 copyright: public domain
 
+define library heapsort
+  use common-dylan;
+  use io;
+end library;
+
+define module heapsort
+  use common-dylan, exclude: { format-to-string };
+  use format-out;
+end module;
+
 
 define constant $IM = 139968;
 define constant $IA = 3877;

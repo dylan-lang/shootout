@@ -1,9 +1,20 @@
 module: k-nucleotide
-use-libraries: common-dylan, io, table-extensions
-use-modules: common-dylan, standard-io, streams, format-out, table-extensions
+
+define library k-nucleotide
+  use common-dylan;
+  use io;
+end library;
+
+define module k-nucleotide
+  use common-dylan, exclude: { format-to-string };
+  use format-out;
+  use standard-io;
+  use streams;
+end module;
+
 
 define sealed class <key-value-pair> (<object>)
-  constant slot key :: <byte-string>, required-init-keyword: key:;
+  constant slot key :: <string>, required-init-keyword: key:;
   slot val :: <integer>, required-init-keyword: value:;
 end class <key-value-pair>;
 
@@ -12,12 +23,12 @@ define sealed domain initialize(<key-value-pair>);
 
 
 define function kfrequency
-    (sequence :: <byte-string>,
-     freq :: <byte-string-table>,
+    (sequence :: <string>,
+     freq :: <string-table>,
      k :: <integer>,
      frame :: <integer>) => ();
   for (i from frame below sequence.size - k + 1 by k)
-    let sub = make(<byte-string>, size: k);
+    let sub = make(<string>, size: k);
     for (offset from 0 below k) sub[offset] := sequence[i + offset] end;
     let record = element(freq, sub, default: #f);
     if (record)
@@ -29,8 +40,8 @@ define function kfrequency
 end function kfrequency;
 
 
-define function frequency(sequence :: <byte-string>, k :: <integer>)
-  let freq = make(<byte-string-table>);
+define function frequency(sequence :: <string>, k :: <integer>)
+  let freq = make(<string-table>);
   for (i from 0 below k)
     kfrequency(sequence, freq, k, i);
   end for;
@@ -41,14 +52,18 @@ define function frequency(sequence :: <byte-string>, k :: <integer>)
   let sum = reduce(\+, 0, map(val, sorted));
 
   for (kvp in sorted)
-    format-out("%s %.3f\n", kvp.key, kvp.val * 100.0d0 / sum);
+    // FIXME: "%.3f" is not supported as control-string, as a result 7 decimal
+    // digits and 'd' marker is printed, instead of 3 decimal digits without
+    // marker.
+    //format-out("%s %.3f\n", kvp.key, kvp.val * 100.0d0 / sum);
+    format-out("%s %=\n", kvp.key, kvp.val * 100.0d0 / sum);
   end for;
   format-out("\n");
 end function frequency;
 
 
-define function count (sequence :: <byte-string>, fragment :: <byte-string>)
-  let freq = make(<byte-string-table>);
+define function count (sequence :: <string>, fragment :: <string>)
+  let freq = make(<string-table>);
   for (i from 0 below fragment.size)
     kfrequency(sequence, freq, fragment.size, i);
   end for;
@@ -61,10 +76,12 @@ begin
   let chars = make(<stretchy-object-vector>);
 
   block ()
-    for (line :: <byte-string> = read-line(*standard-input*),
+    for (line :: <string> = read-line(*standard-input*)
+           then read-line(*standard-input*),
          until: line[0] == '>' & copy-sequence(line,start: 1, end: 6) = "THREE")
     end;
-    for (line :: <byte-string> = read-line(*standard-input*),
+    for (line :: <string> = read-line(*standard-input*)
+           then read-line(*standard-input*),
          until: line[0] == '>')
       if (line[0] ~== ';')
         let old-size = chars.size;
@@ -77,7 +94,7 @@ begin
   exception (e :: <end-of-stream-error>)
   end;
 
-  let sequence = as(<byte-string>, chars);
+  let sequence = as(<string>, chars);
   
   frequency(sequence, 1);
   frequency(sequence, 2);
