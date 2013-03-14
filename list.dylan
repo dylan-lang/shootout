@@ -3,6 +3,17 @@ synopsis:      implementation of "List Processing" benchmark
 author:        Peter Hinely
 copyright:     public domain
 
+define library list
+  use common-dylan;
+  use io;
+end library;
+
+define module list
+  use common-dylan, exclude: { format-to-string };
+  use format-out;
+end module;
+
+
 define constant deques = make(<deque>);
 
 define inline function new-deque() => (deque :: <object-deque>);
