@@ -4,6 +4,16 @@ author:     Peter Hinely
 copyright:  public domain
 
 
+define library matrix
+  use common-dylan;
+  use io;
+end library;
+
+define module matrix
+  use common-dylan, exclude: { format-to-string };
+  use format-out;
+end module;
+
 define constant <vector-of-integers> = limited(<simple-vector>, of: <integer>);
 
 define constant $empty-vector-of-integers = make(<vector-of-integers>);

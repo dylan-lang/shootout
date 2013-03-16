@@ -1,6 +1,16 @@
 module: nsieve
 author: Eric Kidd <eric.kidd@pobox.com>
 
+define library nsieve
+  use common-dylan;
+  use io;
+end library;
+
+define module nsieve
+  use common-dylan, exclude: { format-to-string };
+  use format-out;
+end module;
+
 define function nsieve(limit :: <integer>) => result :: <integer>;
    let flags = make(<byte-vector>, size: limit + 1, fill: 1);
    let count = 0;

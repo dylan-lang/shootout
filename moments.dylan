@@ -2,8 +2,22 @@ module:         moments
 synopsis:       implementation of "Statistical Moments" benchmark
 author:         Peter Hinely
 copyright:      public domain
-use-libraries:  common-dylan, io, transcendental
-use-modules:    common-dylan, standard-io, streams, format-out, transcendental
+
+// FIXME: this benchmark requires string-to-float, which is currently
+// unavailable.
+
+define library moments
+  use common-dylan;
+  use io;
+end library;
+
+define module moments
+  use common-dylan, exclude: { format-to-string };
+  use transcendentals;
+  use format-out;
+  use standard-io;
+  use streams;
+end module;
 
 
 define constant <vector-of-doubles> = limited(<simple-vector>, of: <double-float>);

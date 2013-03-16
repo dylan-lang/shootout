@@ -1,5 +1,15 @@
 module: nestedloop
 
+define library nestedloop
+  use common-dylan;
+  use io;
+end library;
+
+define module nestedloop
+  use common-dylan, exclude: { format-to-string };
+  use format-out;
+end module;
+
 begin
   let arg = application-arguments()[0].string-to-integer;
   let x :: <integer> = 0;

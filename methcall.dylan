@@ -4,6 +4,16 @@ author:     Peter Hinely
 copyright:  public domain
 
 
+define library methcall
+  use common-dylan;
+  use io;
+end library;
+
+define module methcall
+  use common-dylan, exclude: { format-to-string };
+  use format-out;
+end module;
+
 define sealed domain make (subclass(<toggle>));
 define sealed domain initialize (<toggle>);
 
