@@ -2,8 +2,17 @@ module:         reversefile
 synopsis:       implementation of "Reverse A File" benchmark
 author:         Andreas Bogk
 copyright:      public domain
-use-libraries:  common-dylan, io
-use-modules:    common-dylan, standard-io, streams
+
+define library reversefile
+  use common-dylan;
+  use io;
+end library;
+
+define module reversefile
+  use common-dylan, exclude: { format-to-string };
+  use standard-io;
+  use streams;
+end module;
 
 begin
   let lines = #();

@@ -3,6 +3,17 @@ synopsis:  implementation of "Sieve of Eratosthenes" benchmark
 author:    Eric Kidd <eric.kidd@pobox.com>
 copyright: public domain
 
+define library sieve
+  use common-dylan;
+  use io;
+end library;
+
+define module sieve
+  use common-dylan, exclude: { format-to-string };
+  use format-out;
+end module;
+
+
 define function sieve (limit :: <integer>) => result :: <integer>;
   let flags = make(<byte-vector>, size: limit + 1, fill: 1);
 
