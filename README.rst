@@ -10,3 +10,24 @@ Some benchmarks have been removed over time but are still maintained since
 they may be of value for additional microbenchmarking.
 
 In general, we want each example to be one file (if possible).
+
+
+TODO
+----
+
+* ``fasta``, ``pidigits``, ``spectralnorm``, ``spellcheck``, ``strcat``,
+  ``sumcol``, ``takfp``, ``wc`` and ``wordfreq`` have to be converted from GD
+  supported single-file format to a dual-file format compilable under
+  OpenDylan.
+* ``binary-trees``, ``fannkuch``, ``fasta``, ``fibonacci``, ``harmonic``,
+  ``mandelbrot`` and ``nestedloop`` should provide a default command line
+  argument value.
+* ``nsieve`` provides an invalid default and should check for valid argument.
+* ``nsieve`` and ``sieve`` benchmarks don't seem to work properly.
+* ``fasta`` benchmark generates invalid output.
+* ``k-nucleotide``, ``n-body`` and ``spectralnorm`` benchmarks don't provide exactly
+  expected output, due to lack of precision configuration support in the
+  control-string of ``format-out``.
+* ``moments`` benchmark doesn't work due to lack of support for ``string-to-float``.
+* ``pidigits`` benchmark doesn't work due to lack of extended integer support.
+* Many benchmarks can still be optimized.
