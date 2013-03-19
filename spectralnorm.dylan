@@ -2,10 +2,19 @@ module:    spectralnorm
 synopsis:  implementation of "spectral-norm" benchmark
 author:    Bruce Mitchener <bruce@cubik.org>
 copyright: public domain
-use-libraries:  common-dylan, dylan, io
-use-modules:    common-dylan, transcendentals, format-out, extensions
 
-limited-vector-class(<double-vector>, <double-float>, 0.0d0);
+define library spectralnorm
+  use common-dylan;
+  use io;
+end library;
+
+define module spectralnorm
+  use common-dylan, exclude: { format-to-string };
+  use transcendentals;
+  use format-out;
+end module;
+
+define constant <double-vector> = limited(<vector>, of: <double-float>);
 
 define function eval-A (i :: <integer>, j :: <integer>) => result :: <double-float>;
   1.0d0 / (truncate/((i + j) * (i + j + 1), 2) + i + 1);
@@ -51,6 +60,9 @@ begin
     vBv := vBv + u-i * v-i;
     vv := vv + v-i * v-i;
   end for;
-  format-out("%0.9f\n", sqrt(vBv / vv));
+  // FIXME: "%.9f" is not supported as control-string, as a result 7 decimal
+  // digits and 'd' marker is printed, instead of 9 decimal digits without
+  // marker.
+  format-out("%=\n", sqrt(vBv / vv));
 end
 
