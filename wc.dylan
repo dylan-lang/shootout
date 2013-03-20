@@ -2,8 +2,18 @@ module:         wc
 synopsis:       implementation of "Count Lines/Words/Chars" benchmark
 author:         Peter Hinely
 copyright:      public domain
-use-libraries:  common-dylan, io
-use-modules:    common-dylan, standard-io, streams, format-out
+
+define library wc
+  use common-dylan;
+  use io;
+end library;
+
+define module wc
+  use common-dylan, exclude: { format-to-string };
+  use format-out;
+  use standard-io;
+  use streams;
+end module;
 
 define function count () => ()
   let number-of-lines = 0;

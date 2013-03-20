@@ -15,9 +15,9 @@ In general, we want each example to be one file (if possible).
 TODO
 ----
 
-* ``fasta``, ``pidigits``, ``spellcheck``, ``wc`` and ``wordfreq``
-  have to be converted from GD supported single-file format to a dual-file
-  format compilable under OpenDylan.
+* ``fasta``, ``pidigits`` and ``spellcheck`` have to be converted from GD
+  supported single-file format to a dual-file format compilable under
+  OpenDylan.
 * ``binary-trees``, ``fannkuch``, ``fasta``, ``fibonacci``, ``harmonic``,
   ``mandelbrot``, ``nestedloop``, ``strcat`` and ``takfp`` should provide a
   default command line argument value.

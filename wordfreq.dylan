@@ -1,6 +1,16 @@
 module: wordfreq
-use-libraries: common-dylan, io, table-extensions
-use-modules: common-dylan, standard-io, streams, format-out, table-extensions
+
+define library wordfreq
+  use common-dylan;
+  use io;
+end library;
+
+define module wordfreq
+  use common-dylan, exclude: { format-to-string };
+  use format-out;
+  use standard-io;
+  use streams;
+end module;
 
 begin
   let words = make(<string-table>);
