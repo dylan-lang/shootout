@@ -1,11 +1,19 @@
 module:  pidigits
-use-libraries: common-dylan, io, transcendental, dylan
-use-modules: common-dylan, standard-io, streams, format-out, extensions
 
 /*
  *  Based on Christopher Neufeld's  <shootout0000@cneufeld.ca>
  *  SBCL implementation.
  */
+
+define library pidigits
+  use common-dylan;
+  use io;
+end library;
+
+define module pidigits
+  use common-dylan, exclude: { format-to-string };
+  use format-out;
+end module;
 
 define constant $digits-per-line = 10;
 

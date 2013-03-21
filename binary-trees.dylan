@@ -13,9 +13,9 @@ end module;
 define constant <tree> = type-union(<integer>, <node>);
 
 define class <node> (<object>)
-  slot left :: <tree>, required-init-keyword: left:;
-  slot item :: <integer>, required-init-keyword: item:;
-  slot right :: <tree>, required-init-keyword: right:;
+  constant slot left :: <tree>, required-init-keyword: left:;
+  constant slot item :: <integer>, required-init-keyword: item:;
+  constant slot right :: <tree>, required-init-keyword: right:;
 end;
 
 define sealed domain make(singleton(<node>));
@@ -37,8 +37,9 @@ define function check(tree :: <tree>) => (res :: <integer>);
 end;
 
 begin
+  let arg = string-to-integer(element(application-arguments(), 0, default: "10"));
   let min-depth = 4;
-  let max-depth = max(min-depth + 2, application-arguments()[0].string-to-integer);
+  let max-depth = max(min-depth + 2, arg);
   let stretch-depth = max-depth + 1;
 
   format-out("stretch tree of depth %d\t check: %d\n",

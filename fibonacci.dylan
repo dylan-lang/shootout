@@ -20,7 +20,7 @@ define function fibo(M :: <integer>)
 end function fibo;
 
 begin
-  let arg = application-arguments()[0].string-to-integer;
+  let arg = string-to-integer(element(application-arguments(), 0, default: "1"));
   format-out("%d\n", fibo(arg));
 end;
 

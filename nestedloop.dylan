@@ -11,7 +11,7 @@ define module nestedloop
 end module;
 
 begin
-  let arg = application-arguments()[0].string-to-integer;
+  let arg = string-to-integer(element(application-arguments(), 0, default: "1"));
   let x :: <integer> = 0;
 
   for (a from 0 below arg)

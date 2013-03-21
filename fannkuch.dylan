@@ -83,7 +83,7 @@ define function fannkuch (n :: <integer>)
 end function fannkuch;
 
 begin
-  let arg = application-arguments()[0].string-to-integer;
+  let arg = string-to-integer(element(application-arguments(), 0, default: "10"));
   let (max-flips, checksum) = fannkuch(arg);
   format-out("%=\nPfannkuchen(%=) = %d\n", checksum, arg, max-flips);
 end;

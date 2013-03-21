@@ -13,7 +13,7 @@ define module mandelbrot
 end module;
 
 begin
-  let w = application-arguments()[0].string-to-integer;
+  let w = string-to-integer(element(application-arguments(), 0, default: "200"));
   let h = w;
   let bit-num = 0;
   let byte-acc = 0;

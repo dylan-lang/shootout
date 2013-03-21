@@ -2,8 +2,23 @@ module:         spellcheck
 synopsis:       implementation of "Spell Checker" benchmark
 author:         Peter Hinely
 copyright:      public domain
-use-libraries:  common-dylan, io, table-extensions, format-out
-use-modules:    common-dylan, standard-io, streams, table-extensions, format-out
+
+
+define library spellcheck
+  use common-dylan;
+  use collections;
+  use io;
+  use system;
+end library;
+
+define module spellcheck
+  use common-dylan, exclude: { format-to-string };
+  use file-system;
+  use table-extensions;
+  use format-out;
+  use standard-io;
+  use streams;
+end module;
 
 
 define function spellcheck () => ()

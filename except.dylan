@@ -23,7 +23,7 @@ define sealed domain initialize (<hi-exception>);
 
 
 define class <hi-exception> (<error>)
-  slot number :: <integer>, required-init-keyword: number:; // not really used for anything
+  constant slot number :: <integer>, required-init-keyword: number:; // not really used for anything
 end;
 
 

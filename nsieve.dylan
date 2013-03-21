@@ -28,7 +28,7 @@ define function nsieve(limit :: <integer>) => result :: <integer>;
 end function nsieve;
 
 begin
-   let n = string-to-integer(element(application-arguments(), 0, default: "1"));
+   let n = string-to-integer(element(application-arguments(), 0, default: "2"));
 
    let m = (2 ^ n) * 10000;
    format-out("Primes up to %8d %8d\n", m, nsieve(m));

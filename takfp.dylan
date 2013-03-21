@@ -22,7 +22,7 @@ begin
           end;
         end method;
 
-  let n = application-arguments()[0].string-to-integer;
+  let n = string-to-integer(element(application-arguments(), 0, default: "1"));
   // FIXME: "%.1f" is not supported as control-string, as a result 7 decimal
   // digits are printed instead of 1.
   //format-out("%.1f\n", tak(3.0s0 * n, 2.0s0 * n, 1.0s0 * n));

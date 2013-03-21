@@ -1,6 +1,16 @@
 module: fasta
-use-libraries: common-dylan, io
-use-modules: common-dylan, standard-io, streams, format-out
+
+define library fasta
+  use common-dylan;
+  use io;
+end library;
+
+define module fasta
+  use common-dylan, exclude: { format-to-string };
+  use standard-io;
+  use streams;
+  use format-out;
+end module;
 
 define constant $alu :: <byte-string> =
   "GGCCGGGCGCGGTGGCTCACGCCTGTAATCCCAGCACTTTGG"
@@ -121,7 +131,7 @@ define function make-random-fasta
 end function make-random-fasta;
 
 begin
-  let n = application-arguments()[0].string-to-integer;
+  let n = string-to-integer(element(application-arguments(), 0, default: "1000"));
   make-cumulative($iub);
   make-cumulative($homosapiens);
   
