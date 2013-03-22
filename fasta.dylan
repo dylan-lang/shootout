@@ -56,7 +56,7 @@ $homosapiens[3] := make(<frequency>,c: 't',p: 0.3015094502008d0);
 define constant $ia = 3877;
 define constant $ic = 29573;
 define constant $im = 139968;
-define variable *last* :: <double-float> = 42.0d0;
+define variable *last* :: <integer> = 42;
 
 define function gen-random(max-value :: <double-float>)
  => result :: <double-float>;

@@ -16,7 +16,6 @@ TODO
 ----
 
 * ``nsieve`` and ``sieve`` benchmarks don't seem to work properly.
-* ``fasta`` benchmark generates invalid output.
 * ``k-nucleotide``, ``n-body``, ``spectralnorm`` and ``takfp`` benchmarks
   don't provide exactly expected output, due to lack of precision
   configuration support in the control-string of ``format-out``.
