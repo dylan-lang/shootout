@@ -15,7 +15,6 @@ In general, we want each example to be one file (if possible).
 TODO
 ----
 
-* ``nsieve`` and ``sieve`` benchmarks don't seem to work properly.
 * ``k-nucleotide``, ``n-body``, ``spectralnorm`` and ``takfp`` benchmarks
   don't provide exactly expected output, due to lack of precision
   configuration support in the control-string of ``format-out``.
