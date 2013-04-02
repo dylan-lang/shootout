@@ -42,7 +42,7 @@ define function fannkuch (n :: <integer>)
         let flip-count :: <integer> = 0;
         while (perm[0] ~= 0)
           let k :: <integer> = perm[0];
-          let k2 = (k + 1) / 2.0;
+          let k2 :: <integer> = floor/(k + 1, 2);
           for(i from 0 below k2)
             let tmp = perm[i];
             perm[i] := perm[k - i];
