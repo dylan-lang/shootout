@@ -15,6 +15,10 @@ In general, we want each example to be one file (if possible).
 TODO
 ----
 
+* ``n-body``, ``mandelbrot`` and ``spectralnorm`` use a vector of size 1 to
+  avoid heap allocation that happens with double float variables (at least
+  with C backend). This makes the code suboptimal and confusing, and should
+  be reverted whenever the runtime is improved.
 * ``k-nucleotide``, ``n-body``, ``spectralnorm`` and ``takfp`` benchmarks
   don't provide exactly expected output, due to lack of precision
   configuration support in the control-string of ``format-out``.
