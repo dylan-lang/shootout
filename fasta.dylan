@@ -28,7 +28,7 @@ end class <frequency>;
 
 define constant $null-frequency :: <frequency> = make(<frequency>,c: '\<0>', p: 0.0d0);
 
-define constant <frequency-vector> = <simple-object-vector>;
+define constant <frequency-vector> = limited(<vector>, of: <frequency>);
 
 define constant $iub :: <frequency-vector> = make(<frequency-vector>,size: 15,fill: $null-frequency);
 $iub[0] := make(<frequency>,c: 'a',p: 0.27d0);
@@ -61,7 +61,7 @@ define variable *last* :: <integer> = 42;
 define function gen-random(max-value :: <double-float>)
  => result :: <double-float>;
   *last* := modulo((*last* * $ia + $ic), $im);
-  (max-value * *last*) / $im;
+  (max-value * *last*) / as(<double-float>, $im);
 end function gen-random;
 
 define function make-cumulative(tbl :: <frequency-vector>)
