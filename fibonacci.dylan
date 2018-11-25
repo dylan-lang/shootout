@@ -20,12 +20,10 @@ define function fibo(M :: <integer>)
 end function fibo;
 
 begin
-    let arg :: <integer> = string-to-integer(element(application-arguments(), 0, default: "1"));
-    let result :: <integer> = 0;
-  
+  let arg :: <integer> = string-to-integer(element(application-arguments(), 0, default: "1"));
+  let result :: <integer> = 0;
   profiling (cpu-time-seconds, cpu-time-microseconds)
     result := fibo(arg);
-
   results
     format-out("fibo(%d) = %d (in %d.%s seconds)\n", arg, result,
 		  cpu-time-seconds, integer-to-string(cpu-time-microseconds, size: 6));
