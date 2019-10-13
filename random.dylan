@@ -4,16 +4,6 @@ author:     Andreas Bogk
 copyright:  public domain
 
 
-define library random
-  use common-dylan;
-  use io;
-end library;
-
-define module random
-  use common-dylan, exclude: { format-to-string };
-  use format-out;
-end module;
-
 define constant $IM = 139968;
 define constant $IA = 3877;
 define constant $IC = 29573;

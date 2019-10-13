@@ -1,3 +1,4 @@
 library: harmonic
 executable: harmonic
-files: harmonic
+files: harmonic-library
+       harmonic

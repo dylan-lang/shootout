@@ -1,3 +1,4 @@
 library: hash
 executable: hash
-files: hash
+files: hash-library
+       hash

@@ -1,15 +1,5 @@
 module: fannkuch
 
-define library fannkuch
-  use common-dylan;
-  use io;
-end library;
-
-define module fannkuch
-  use common-dylan, exclude: { format-to-string };
-  use format-out;
-end module;
-
 define constant <int-vector> = limited(<vector>, of: <integer>);
 
 define function fannkuch (n :: <integer>)

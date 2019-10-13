@@ -1,3 +1,4 @@
 library: spectralnorm
 executable: spectralnorm
-files: spectralnorm
+files: spectralnorm-library
+       spectralnorm

@@ -1,3 +1,4 @@
 library: ary
 executable: ary
-files: ary
+files: ary-library
+       ary

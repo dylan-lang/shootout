@@ -1,3 +1,4 @@
 library: pidigits
 executable: pidigits
-files: pidigits
+files: pidigits-library
+       pidigits

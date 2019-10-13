@@ -1,3 +1,4 @@
 library: wc
 executable: wc
-files: wc
+files: wc-library
+       wc

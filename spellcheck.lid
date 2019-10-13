@@ -1,3 +1,4 @@
 library: spellcheck
 executable: spellcheck
-files: spellcheck
+files: spellcheck-library
+       spellcheck

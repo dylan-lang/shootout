@@ -1,3 +1,4 @@
 library: sumcol
 executable: sumcol
-files: sumcol
+files: sumcol-library
+       sumcol

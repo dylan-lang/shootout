@@ -1,17 +1,5 @@
 module: k-nucleotide
 
-define library k-nucleotide
-  use common-dylan;
-  use io;
-end library;
-
-define module k-nucleotide
-  use common-dylan, exclude: { format-to-string };
-  use format-out;
-  use standard-io;
-  use streams;
-end module;
-
 
 define sealed class <key-value-pair> (<object>)
   constant slot key :: <string>, required-init-keyword: key:;

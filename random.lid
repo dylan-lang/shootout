@@ -1,3 +1,4 @@
 library: random
 executable: random
-files: random
+files: random-library
+       random

@@ -1,17 +1,5 @@
 module: mandelbrot
 
-define library mandelbrot
-  use common-dylan;
-  use io;
-end library;
-
-define module mandelbrot
-  use common-dylan, exclude: { format-to-string };
-  use format-out;
-  use standard-io;
-  use streams;
-end module;
-
 // double float slot assignment implementation makes use of heap allocation,
 // using a double float vector of size 1 avoids that allocation.
 define constant <double-vector-1> = limited(<vector>, of: <double-float>, size: 1);

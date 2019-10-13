@@ -1,3 +1,4 @@
 library: fasta
 executable: fasta
-files: fasta
+files: fasta-library
+       fasta

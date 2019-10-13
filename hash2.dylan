@@ -3,16 +3,6 @@ synopsis:       implementation of "Hashes, Part II" benchmark
 author:         Peter Hinely
 copyright:      public domain
 
-define library hash2
-  use common-dylan;
-  use io;
-end library;
-
-define module hash2
-  use common-dylan, exclude: { format-to-string };
-  use format-out;
-end module;
-
 
 define function main () => ()
   let arg = string-to-integer(element(application-arguments(), 0, default: "1"));

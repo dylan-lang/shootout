@@ -1,3 +1,4 @@
 library: moments
 executable: moments
-files: moments
+files: moments-library
+       moments

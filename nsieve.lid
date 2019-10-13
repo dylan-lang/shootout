@@ -1,3 +1,4 @@
 library: nsieve
 executable: nsieve
-files: nsieve
+files: nsieve-library
+       nsieve

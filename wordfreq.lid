@@ -1,3 +1,4 @@
 library: wordfreq
 executable: wordfreq
-files: wordfreq
+files: wordfreq-library
+       wordfreq

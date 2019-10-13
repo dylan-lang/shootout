@@ -1,3 +1,4 @@
 library: nestedloop
 executable: nestedloop
-files: nestedloop
+files: nestedloop-library
+       nestedloop

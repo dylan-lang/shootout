@@ -5,16 +5,6 @@ module:  pidigits
  *  SBCL implementation.
  */
 
-define library pidigits
-  use common-dylan;
-  use io;
-end library;
-
-define module pidigits
-  use common-dylan, exclude: { format-to-string };
-  use format-out;
-end module;
-
 define constant $digits-per-line = 10;
 
 define function compose-val (a1, a2)

@@ -1,3 +1,4 @@
-library: fibo
-executable: fibo
-files: fibonacci
+library: fibonacci
+executable: fibonacci
+files: fibonacci-library
+       fibonacci
