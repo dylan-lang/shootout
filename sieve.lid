@@ -1,3 +1,4 @@
 library: sieve
 executable: sieve
-files: sieve
+files: sieve-library
+       sieve

@@ -1,3 +1,4 @@
 library: heapsort
 executable: heapsort
-files: heapsort
+files: heapsort-library
+       heapsort

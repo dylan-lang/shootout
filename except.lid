@@ -1,3 +1,4 @@
 library: except
 executable: except
-files: except
+files: except-library
+       except

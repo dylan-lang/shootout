@@ -1,3 +1,4 @@
 library: objinst
 executable: objinst
-files: objinst
+files: objinst-library
+       objinst

@@ -1,16 +1,5 @@
 module: n-body
 
-define library n-body
-  use common-dylan;
-  use io;
-end library;
-
-define module n-body
-  use common-dylan, exclude: { format-to-string };
-  use transcendentals;
-  use format-out;
-end module;
-
 // double float slot assignment implementation makes use of heap allocation,
 // using a double float vector of size 1 avoids that allocation.
 define constant <double-vector-1> = limited(<vector>, of: <double-float>, size: 1);

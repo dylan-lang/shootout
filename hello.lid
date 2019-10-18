@@ -1,3 +1,4 @@
 library: hello
 executable: hello
-files: hello
+files: hello-library
+       hello

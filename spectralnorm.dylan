@@ -3,17 +3,6 @@ synopsis:  implementation of "spectral-norm" benchmark
 author:    Bruce Mitchener <bruce@cubik.org>
 copyright: public domain
 
-define library spectralnorm
-  use common-dylan;
-  use io;
-end library;
-
-define module spectralnorm
-  use common-dylan, exclude: { format-to-string };
-  use transcendentals;
-  use format-out;
-end module;
-
 define constant <double-vector> = limited(<vector>, of: <double-float>);
 
 define function eval-A (i :: <integer>, j :: <integer>) => result :: <double-float>;

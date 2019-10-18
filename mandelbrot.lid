@@ -1,3 +1,4 @@
 library: mandelbrot
 executable: mandelbrot
-files: mandelbrot
+files: mandelbrot-library
+       mandelbrot

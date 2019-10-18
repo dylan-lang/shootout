@@ -1,3 +1,4 @@
 library: ackermann
 executable: ackermann
-files: ackermann
+files: ackermann-library
+       ackermann

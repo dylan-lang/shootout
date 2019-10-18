@@ -1,3 +1,4 @@
 library: reversefile
 executable: reversefile
-files: reversefile
+files: reversefile-library
+       reversefile

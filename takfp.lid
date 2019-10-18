@@ -1,3 +1,4 @@
 library: takfp
 executable: takfp
-files: takfp
+files: takfp-library
+       takfp
